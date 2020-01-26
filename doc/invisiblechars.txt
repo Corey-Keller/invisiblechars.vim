@@ -1,0 +1,208 @@
+*invisiblechars.txt*	Show invisible characters (tab, space, nbsp etc)
+
+===========================================================================
+CONTENTS                                           *invisiblechars-contents*
+
+Introduction ............................. |invisiblechars-introduction|
+Variables ................................ |invisiblechars-variables|
+License .................................. |invisiblechars-license|
+
+===========================================================================
+Introduction                    *invisiblechars* *invisiblechars-introduction*
+
+Show invisible characters (tab, space, nbsp etc)
+
+===========================================================================
+Variables                                         *invisiblechars-variables*
+
+SHOW                                              |invisiblechars-var-show|
+	|g:invisiblechars#show#all|
+	|g:invisiblechars#show#all_force|
+	|g:invisiblechars#show#conceal|
+	|g:invisiblechars#show#eol|
+	|g:invisiblechars#show#extends|
+	|g:invisiblechars#show#indent|
+	|g:invisiblechars#show#nbsp|
+	|g:invisiblechars#show#precedes|
+	|g:invisiblechars#show#space|
+	|g:invisiblechars#show#tab|
+	|g:invisiblechars#show#trail|
+	|g:invisiblechars#show#trail_ins|
+
+LIST                                              |invisiblechars-var-list|
+	|g:invisiblechars#list#extend|
+	|g:invisiblechars#list#noextend|
+	|g:invisiblechars#list#override|
+
+MISC                                              |invisiblechars-var-misc|
+	|g:invisiblechars#extended_font|
+	|g:invisiblechars#indent_chars|
+
+DEBUG                                             |invisiblechars-var-debug|
+	|g:invisiblechars_list|
+	|g:invisiblechars_ran_init|
+	|g:invisiblechars_ran_wrapup|
+
+SHOW                                              *invisiblechars-var-show*
+The show variables are |boolean| values used to determine if particular
+|'listchars'| |options| will be visible if defined in the list |Dictionaries|.
+See |invisiblechars-var-list| for more information about the list variables.
+
+Use one (1) for true, and zero (0) for false. All effects listed under
+these variables applies only when the value is true.
+
+*g:invisiblechars#show#all*
+	Any unset listchars show variables (ones that have "For more info see
+	lcs-*" in their descriptions) will be set to 1. This way you only have
+	to specify the ones that you don't want to be visible as false.
+
+*g:invisiblechars#show#all_force*
+	All listchars show variables, regardless of current state, will be set
+	to one (1)
+
+*g:invisiblechars#show#conceal*
+	Will display "conceal" listchars. For more info see |lcs-conceal|
+
+*g:invisiblechars#show#eol*
+	Will display "eol" listchars. For more info see |lcs-eol|
+
+*g:invisiblechars#show#extends*
+	Will display "extends" listchars. For more info see |lcs-extends|
+
+*g:invisiblechars#show#indent*
+	If you use tabs for indentation, and want to display the indent mark,
+	this will place |g:invisiblechars#indent_chars| to display in place
+	of tabs.
+	Note: Has no effect if |g:invisiblechars#show#tab| is true
+
+*g:invisiblechars#show#nbsp*
+	Will display "nbsp" listchars. For more info see |lcs-nbsp|
+
+*g:invisiblechars#show#precedes*
+	Will display "precedes" listchars. For more info see |lcs-precedes|
+
+*g:invisiblechars#show#space*
+	Will display "space" listchars. For more info see |lcs-space|
+
+*g:invisiblechars#show#tab*
+	Will display "tab" listchars. For more info see |lcs-tab|
+
+*g:invisiblechars#show#trail*
+	Will display "trail" listchars. For more info see |lcs-trail|
+
+*g:invisiblechars#show#trail_ins*
+	Trailing spaces will be visible in insert mode (i.e. Every time you hit
+	the spacebar between words)
+
+LIST                                              *invisiblechars-var-list*
+The list variables are |Dictionaries| who's keys are limited to the |options|
+available to |'listchars'|, with the value being a |string| that will be
+displayed if the corrisponding show variable (|invisiblechars-var-show|) is
+set to one (1).  The variable that is used to populate the |'listchars'|
+option is determined by conditions laid out under each variable. The
+variable must contain one (1) or more of the |'listchars'| types as keys,
+with |string| values to do anything.
+
+*g:invisiblechars#list#extend*
+	Iff (if and only if) |g:invisiblechars#extended_font| exists and is
+	equal to one (1) this |Dictionary| will be used.
+
+	Default:
+	+=======+---------+------+----------+-------+-------+-------+
+	| Key   | extends | nbsp | precedes | space | tab   | trail |
+	+=======+---------+------+----------+-------+-------+-------+
+	| Value | '❯'     | '␣'  | '❮'      | '·'   | '«-»' | '□'   |
+	+=======+---------+------+----------+-------+-------+-------+
+
+*g:invisiblechars#list#noextend*
+	If |g:invisiblechars#extended_font| does not exist or is equal to
+	zero (0) this |Dictionary| will be used.
+
+	Default:
+	+=======+---------+------+----------+-------+-------+-------+
+	| Key   | extends | nbsp | precedes | space | tab   | trail |
+	+=======+---------+------+----------+-------+-------+-------+
+	| Value | '>'     | '+'  | '<'      | '`'   | '<->' | '~'   |
+	+=======+---------+------+----------+-------+-------+-------+
+
+*g:invisiblechars#list#override*
+	This |Dictionary| will be used (only if non-empty) instead of
+	|g:invisiblechars#list#extend| or |g:invisiblechars#list#noextend|
+
+	Default: {}
+
+MISC                                              *invisiblechars-var-misc*
+
+*g:invisiblechars#extended_font*
+	|boolean| value that determines if we use |g:invisiblechars#list#extend|
+	(if true) or |g:invisiblechars#list#noextend| (if false) to populate
+	|g:invisiblechars_list|
+
+	Default:
+	+---------------------------+-----------------+
+	| exists('g:extended_font') | Value           |
+	+===========================+=================+
+	| true                      | g:extended_font |
+	+---------------------------+-----------------+
+	| false                     | 0               |
+	+---------------------------+-----------------+
+
+*g:invisiblechars#indent_chars*
+	|string| containing the characters that will be used for |lcs-tab| if
+	|g:invisiblechars#show#tab| is false and |g:invisiblechars#show#indent|
+	is true.
+
+	Default:
+	+---------------------------------+--------+
+	| Condition                       | String |
+	+=================================+========+
+	| |g:invisiblechars#extended_font|  | '⁞ '   |
+	| exists and is equal to one (1)  |        |
+	+---------------------------------+--------+
+	| |g:invisiblechars#extended_font|  | '| '   |
+	| does not exist or is equal      |        |
+	| to zero (0)                     |        |
+	+---------------------------------+--------+
+
+DEBUG                                             *invisiblechars-var-debug*
+
+*g:invisiblechars_list*
+	This is an automatically populated variable, don't bother changing it
+	directly.
+
+	Default:
+	Note: The table is in order of precedence. The first condition to be
+	      true will set the variable.
+	+--------------------------------+--------------------------------+
+	| Condition                      | List                           |
+	+================================+================================+
+	| |g:invisiblechars#list#override| | |g:invisiblechars#list#override| |
+	| exists and is non empty        |                                |
+	+--------------------------------+--------------------------------+
+	| |g:invisiblechars#extended_font| | |g:invisiblechars#list#extend|   |
+	| exists and is equal to one (1) |                                |
+	+--------------------------------+--------------------------------+
+	| |g:invisiblechars#extended_font| | |g:invisiblechars#list#noextend| |
+	| does not exist or is equal     |                                |
+	| to zero (0)                    |                                |
+	+--------------------------------+--------------------------------+
+
+*g:invisiblechars_ran_init*
+	This variable is set when |invisiblechars#show()| is first called.
+	When unset (or manually set to 0 to force re-initialization)
+
+*g:invisiblechars_ran_wrapup*
+
+===========================================================================
+License                                             *invisiblechars-license*
+
+License: Mozilla Public License, Version 2.0
+
+Copyright (c) 2019 Corey Keller
+
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at http://mozilla.org/MPL/2.0/.
+
+===========================================================================
+vim:textwidth=80:norightleft:noexpandtab:ft=help

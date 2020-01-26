@@ -1,0 +1,25 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_OUTPUT_FILESEP	slash	/slash or backslash/
+!_TAG_OUTPUT_MODE	u-ctags	/u-ctags or e-ctags/
+!_TAG_PROGRAM_AUTHOR	Universal Ctags Team	//
+!_TAG_PROGRAM_NAME	Universal Ctags	/Derived from Exuberant Ctags/
+!_TAG_PROGRAM_URL	https://ctags.io/	/official site/
+!_TAG_PROGRAM_VERSION	0.0.0	/f43463a2/
+InvisibleCharsNoTrailInsMode	autoload/invisiblechars.vim	/^	augroup InvisibleCharsNoTrailInsMode$/;"	a
+InvisibleCharsUpdListChars	autoload/invisiblechars.vim	/^	augroup InvisibleCharsUpdListChars$/;"	a
+g:	autoload/invisiblechars.vim	/^			let g:{show_char_flag} =  get(g:, show_char_flag)$/;"	v
+g:	autoload/invisiblechars.vim	/^			let g:{show_char_flag} =  get(g:, show_char_flag, 1)$/;"	v
+g:	autoload/invisiblechars.vim	/^			let g:{show_char_flag} = 1$/;"	v
+g:autoloaded_invisiblechars	autoload/invisiblechars.vim	/^	let g:autoloaded_invisiblechars = 1$/;"	v
+g:invisiblechars_extended_font	autoload/invisiblechars.vim	/^		let g:invisiblechars_extended_font = get(g:, 'extended_font')$/;"	v
+g:invisiblechars_indent_chars	autoload/invisiblechars.vim	/^	let g:invisiblechars_indent_chars = get(g:,$/;"	v
+g:invisiblechars_list	autoload/invisiblechars.vim	/^		let g:invisiblechars_list = {$/;"	v
+g:invisiblechars_ran_init	autoload/invisiblechars.vim	/^	let g:invisiblechars_ran_init = 1$/;"	v
+g:invisiblechars_show_all	autoload/invisiblechars.vim	/^	let g:invisiblechars_show_all = get(g:,$/;"	v
+g:invisiblechars_show_all_force	autoload/invisiblechars.vim	/^	let g:invisiblechars_show_all_force = get(g:,$/;"	v
+g:invisiblechars_show_indent	autoload/invisiblechars.vim	/^	let g:invisiblechars_show_indent = get(g:,$/;"	v
+g:invisiblechars_show_trail_ins	autoload/invisiblechars.vim	/^	let g:invisiblechars_show_trail_ins = get(g:,$/;"	v
+invisiblechars#_init	autoload/invisiblechars.vim	/^function! invisiblechars#_init() abort "{{{1$/;"	f
+invisiblechars#show	autoload/invisiblechars.vim	/^function! invisiblechars#show() abort "{{{1$/;"	f
+invisiblechars.vim	README.md	/^# invisiblechars.vim$/;"	c
